@@ -12,7 +12,7 @@ const uint8_t RED_LED_PINS[4] = {13, 9, 5, 1};
 const uint8_t GRN_LED_PINS[4] = {14, 10, 6, 2};
 const uint8_t BLUE_LED_PINS[4] = {15, 11, 7, 3};
 
-uint8_t colors[4][4][3] = {
+volatile uint8_t colors[4][4][3] = {
   {{0x00, 0x00, 0x00}, {0x00, 0x00, 0x00}, {0x00, 0x00, 0x00}, {0x00, 0x00, 0x00}},
   {{0x00, 0x00, 0x00}, {0x00, 0x00, 0x00}, {0x00, 0x00, 0x00}, {0x00, 0x00, 0x00}},
   {{0x00, 0x00, 0x00}, {0x00, 0x00, 0x00}, {0x00, 0x00, 0x00}, {0x00, 0x00, 0x00}},
@@ -21,8 +21,8 @@ uint8_t colors[4][4][3] = {
 
 void setLEDColor(uint8_t row, uint8_t col, byte red, byte green, byte blue){
   colors[row][col][0] = red;
-  colors[row][col][0] = green;
-  colors[row][col][0] = blue;
+  colors[row][col][1] = green;
+  colors[row][col][2] = blue;
 }
 
 void renderLED(uint8_t row, uint8_t col, uint8_t color[]){
